@@ -8,8 +8,17 @@
 <?php
     $conexion = mysqli_connect("localhost", "root","", "examen");
     mysqli_set_charset($conexion,'utf8');
-    $agregarColImg = "ALTER TABLE examen ADD imagenes varchar (255)";
-    mysqli_query($conexion,$agregarColImg)
+    
+
+    // Imagen por defecto
+    $creaTablaImg = "CREATE TABLE images (id int(10),imagen blob, nombre varchar(255), tamano varchar(15), formato varchar(10))";
+    mysqli_query($conexion,$creaTablaImg);
+    $agregarColImg = "ALTER TABLE articulo ADD imagenes varchar(20) default 0";
+    mysqli_query($conexion,$agregarColImg);
+
+
+
+
 if (isset($_POST['accion']))
  {
 
