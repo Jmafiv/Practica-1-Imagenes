@@ -7,9 +7,9 @@
 <body>
 <?php
     $conexion = mysqli_connect("localhost", "root","", "examen");
-    
     mysqli_set_charset($conexion,'utf8');
-    
+    $agregarColImg = "ALTER TABLE examen ADD imagenes varchar (255)";
+    mysqli_query($conexion,$agregarColImg)
 if (isset($_POST['accion']))
  {
 
