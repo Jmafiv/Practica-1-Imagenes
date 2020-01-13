@@ -44,20 +44,7 @@
 
       <tr><td> Stock: </td><td><input type="number" name="stock" value="<?=$stock?>"></td></tr>
       <tr><td> Imagen:</td><td>
-        <?php
-         $conexion = mysqli_connect("localhost", "root","", "examen");
-         mysqli_set_charset($conexion,'utf8');
-         $sacar = "SELECT count(*) FROM ".$tabla." WHERE (num_ident=$n)" ;
-         $resultado = mysqli_query($conexion,$sacar);
-         $fila=mysqli_fetch_row($resultado);
-         $num_registros=$fila[0];
-         if ($num_registros!=0){
-           echo "<img src='imagen.php?n=".$codigo."'>";
-         }
-         else{echo "<img src='images/nula.jpg'>";}
-          mysqli_close($conexion);
-          ?>
-
+        
 
       </td></tr>
 
