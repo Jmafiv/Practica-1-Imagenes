@@ -43,6 +43,7 @@
       <tr><td> Precio de venta: </td><td><input type="text" name="precio_venta" value="<?=$precio_venta?>" size="20"></td></tr>
 
       <tr><td> Stock: </td><td><input type="number" name="stock" value="<?=$stock?>"></td></tr>
+      <tr><td> Imagen:</td><td></td></tr>
 
  <tr><td>
 
