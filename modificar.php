@@ -47,19 +47,22 @@
         <?php
           $conexion=new mysqli("localhost","root","","examen");
           $conexion->set_charset("utf8");
-          $sqlImage = "SELECT imagenes FROM articulo WHERE codigo = '$codigo'";
+          $sqlImage = "SELECT * from images where id = (SELECT imagenes FROM articulo WHERE codigo = '$codigo')";
           $resultado=$conexion->query($sqlImage);
           $fila=$resultado->fetch_array();
-          extract($fila);
-          if ($fila['imagenes'] != 0){
-            echo "<img src='imagen.php?n=".$fila['imagenes']."'>";
+          $filas = $resultado->num_rows;
+          if ($filas != 0){
+            extract($fila);
+            echo "<img src='images/imagen.php?id=$imagenes'>";
           }
           else{
             echo "<img src='images/sinfoto.gif'>";
           }
           mysqli_close($conexion);
+        echo "</td>";
         ?>
-      </td></tr>
+    </tr>
+        <tr><td colspan="2"><input type="file" name="foto"></td></tr>
 
  <tr><td>
 
