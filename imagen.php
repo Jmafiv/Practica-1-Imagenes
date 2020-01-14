@@ -1,7 +1,7 @@
 <?php 
 extract($_GET);
 $conexion=mysqli_connect ("localhost","root","","examen");
-$sacar = "SELECT * FROM articulo WHERE id=$id";
+$sacar = "SELECT * FROM  images where id = (SELECT imagenes from articulo WHERE codigo='$id')"; // Busca la imagen de un artículo concreto
 $resultado = mysqli_query($conexion,$sacar);
 if ($registro = mysqli_fetch_array($resultado))
        {  

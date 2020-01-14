@@ -30,7 +30,7 @@
 
   
 
-    <form action="index.php" method="post">
+    <form action="index.php" method="post" ENCTYPE="multipart/form-data">
 
   <table>
 
@@ -47,13 +47,16 @@
         <?php
           $conexion=new mysqli("localhost","root","","examen");
           $conexion->set_charset("utf8");
-          $sqlImage = "SELECT * from images where id = (SELECT imagenes FROM articulo WHERE codigo = '$codigo')";
+          $sqlImage = "SELECT * from images where id = (SELECT imagenes FROM articulo WHERE codigo = '$codigo')"; // Busca los datos de la foto del artículo
           $resultado=$conexion->query($sqlImage);
           $fila=$resultado->fetch_array();
           $filas = $resultado->num_rows;
           if ($filas != 0){
             extract($fila);
-            echo "<img src='images/imagen.php?id=$imagenes'>";
+            echo "<img src='imagen.php?id=$codigo'>";
+            echo "<td>Nombre: $nombre<br>
+            Tamaño: $tamano<br>
+            Formato: $formato</td>";
           }
           else{
             echo "<img src='images/sinfoto.gif'>";
@@ -62,7 +65,7 @@
         echo "</td>";
         ?>
     </tr>
-        <tr><td colspan="2"><input type="file" name="foto"></td></tr>
+        <tr><td colspan="2"><input type="file" name="foto" accept="image/*"></td></tr>
 
  <tr><td>
 
