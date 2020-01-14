@@ -58,14 +58,14 @@ if (isset($_POST['accion']))
         $foto_reconvertida = addslashes($foto_reconvertida);
         $agregaImg = 'INSERT INTO images VALUES(null, "'.$foto_reconvertida.'", "'.$_FILES['foto']['name'].'",'. $_FILES['foto']['size'].',"'. $_FILES['foto']['type'].'")';
         mysqli_query($conexion,$agregaImg);
-        $img = $conexion -> insert_id;
+        $img = "'".$conexion -> insert_id."'";
       }
       else{
         $img = "(SELECT imagenes from articulo where codigo = \"$_POST[codigo]\")";
       }
 
       // Modifica/añade la foto al artículo
-      $modifica = "UPDATE articulo SET  descripcion=\"$_POST[descripcion]\", precio_compra=\"$_POST[precio_compra]\", precio_venta=\"$_POST[precio_venta]\", stock=\"$_POST[stock]\", imagenes = '$img' WHERE codigo=\"$_POST[codigo]\"";
+      $modifica = "UPDATE articulo SET  descripcion=\"$_POST[descripcion]\", precio_compra=\"$_POST[precio_compra]\", precio_venta=\"$_POST[precio_venta]\", stock=\"$_POST[stock]\", imagenes = $img WHERE codigo=\"$_POST[codigo]\"";
       mysqli_query($conexion,$modifica);
     }
 
