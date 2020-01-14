@@ -44,8 +44,21 @@
 
       <tr><td> Stock: </td><td><input type="number" name="stock" value="<?=$stock?>"></td></tr>
       <tr><td> Imagen:</td><td>
-        
-
+        <?php
+          $conexion=new mysqli("localhost","root","","examen");
+          $conexion->set_charset("utf8");
+          $sqlImage = "SELECT imagenes FROM articulo WHERE codigo = '$codigo'";
+          $resultado=$conexion->query($sqlImage);
+          $fila=$resultado->fetch_array();
+          extract($fila);
+          if ($fila['imagenes'] != 0){
+            echo "<img src='imagen.php?n=".$fila['imagenes']."'>";
+          }
+          else{
+            echo "<img src='images/sinfoto.gif'>";
+          }
+          mysqli_close($conexion);
+        ?>
       </td></tr>
 
  <tr><td>
