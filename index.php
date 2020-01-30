@@ -11,7 +11,7 @@
     
 
     // Imagen por defecto
-    $creaTablaImg = "CREATE TABLE images (id int(10),imagen blob, nombre varchar(255), tamano varchar(15), formato varchar(10))";
+    $creaTablaImg = "CREATE TABLE images (id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,imagen blob, nombre varchar(255), tamano varchar(15), formato varchar(10))";
     mysqli_query($conexion,$creaTablaImg);
     $agregarColImg = "ALTER TABLE articulo ADD imagenes varchar(20) default 0";
     mysqli_query($conexion,$agregarColImg);
